@@ -17,7 +17,7 @@ X_test_Nor = StandardScaler().fit_transform(X_test[:])
 svm = [SVC(C=i,gamma='scale').fit(X_train_Nor,y_train) for i in c]
 cros = [cross_val_score(i,X_train_Nor,y_train,cv=10,n_jobs=-1).mean() for i in svm]
 
-svm_f = SVC(C=cros[cros.index(max(cros))],gamma='scale').fit(X_train_Nor,y_train)
+svm_f = SVC(C=c[cros.index(max(cros))],gamma='scale').fit(X_train_Nor,y_train)
 model = svm_f.predict(X_test_Nor) 
 
 f1 = m.f1_score(y_test,model)
